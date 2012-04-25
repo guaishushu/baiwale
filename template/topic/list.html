@@ -1,15 +1,15 @@
 {extends file='layout/main.html'}
 {block name="main"}
 <div class="row">
-	<div class="span8">
+	<div class="span9">
 		<h2>话题列表</h2>
 		<table class="table table-bordered table-striped">
 		    <tbody>
 		    	{foreach $info as $val}
 		      	<tr>
 			        <td style="width:8%"><a href="topic/tag/{$val.id}.html" style="color:#079">{$val.tag}</a></code></td>
-			        <td style="width:55%"><a href="topic/view/{$val.tid}.html">{$val.title}</a>&nbsp;&nbsp;<a href="accounts/view/{$val.uid}.html"><code>{$val.username}</code></a></td>
-			        <td style="width:37%" class="muted">{if $val.ruid}<a href="accounts/view/{$val.ruid}.html"><code>{$val.rusername}</code></a>{else}{$val.rusername}{/if}&nbsp;&nbsp;{$val.rtime}</td>
+			        <td style="width:55%"><a href="topic/view/{$val.tid}.html">{$val.title}</a>&nbsp;&nbsp;<a href="account/view/{$val.uid}.html"><code>{$val.username}</code></a></td>
+			        <td style="width:37%" class="muted">{if $val.ruid}<a href="account/view/{$val.ruid}.html"><code>{$val.rusername}</code></a>{else}{$val.rusername}{/if}&nbsp;&nbsp;{$val.rtime}</td>
 		      	</tr>
 		      	{/foreach}
 		    </tbody>
@@ -19,8 +19,8 @@
 	<div class="span3">
 		<h2>标签</h2>
 		<div class="block">
-			{foreach $tag as $key => $val}
-				<span style="padding:5px"><a href="topic/tag/{$val.id}.html" style="color:#079">{$val.tag}</span>
+			{foreach $tags as $key => $val}
+				<a href="topic/tag/{$val.id}.html" class="label label-success">{$val.tag}</a>
 			{/foreach}
 		</div>
 	</div>

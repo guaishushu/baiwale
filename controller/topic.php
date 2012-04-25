@@ -24,14 +24,18 @@ class Action extends SiteAction {
         $this->display("topic/list.html", array(
 			'active' => 'topic',
             'info' => $info,
-            'tag' => $tag,
+            'tags' => $tag,
 		));
     }
 
     public function view($tid='') {
     	$topic = _model('topic')->read(array('tid'=>$tid));
+        $topic['addtime'] = date("Y-m-d H:i");
+        $user = _model('user')->read('WHERE uid = ' . $topic['uid']);
+        $topic['username'] = $user['username'];
         $tag = _model('tag')->read(array('id'=>$topic['tag']));
         $replay = _model('replay')->getList("WHERE tid = $tid ORDER BY addtime ASC");
+        $tags = _model('tag')->getList();
         foreach ($replay as $key => $value) {
             if ( $value['uid'] == 0) {
                 $replay[$key]['username'] = '青岛银';
@@ -48,6 +52,7 @@ class Action extends SiteAction {
 			'active' => 'topic',
             'topic' => $topic,
             'tag' => $tag,
+            'tags' => $tags,
             'replay' => $replay,
 		));
     }

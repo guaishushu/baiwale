@@ -3,7 +3,7 @@
 return array(
 
     'db' => array(
-       'class' => array('Database', array('mysql', 'localhost', 'ezavatar_baiwale', 'baiwale123', 'ezavatar_baiwale')),
+       'class' => array('Database', array('mysql', 'localhost', 'root', 'good123', 'baiwale')),
        'initialization' => array(
            'SET character_set_connection=utf8, character_set_results=utf8, character_set_client=binary',
            "SET sql_mode=''"

@@ -19,7 +19,7 @@
 			<div style="margin-top:10px">{$topic.text}</div>
 			<!--warring-->
 			<div class="alert alert-info">
-			    期待您的<a class="ping" href="#">&nbsp;<span class="label label-info">评论</span></a>&nbsp;喔
+			    期待您的<a class="ping" href="#">&nbsp;<span class="label label-info">精彩评论</span></a>&nbsp;喔&nbsp;&nbsp;&nbsp;&nbsp;本文由<a href="account/view/{$topic.uid}" class="label label-important">{$topic.username}</a>于{$topic.addtime}发布
 			</div>
 			<!--end warring-->
 			<!--replay-->
@@ -65,7 +65,9 @@
 
 		<h2>标签</h2>
 		<div class="block">
-			民生
+			{foreach $tags as $key => $val}
+				<a href="topic/tag/{$val.id}.html" class="label label-success">{$val.tag}</a>
+			{/foreach}
 		</div>
 	</div>
 </div>

@@ -1,0 +1,101 @@
+{extends file='layout/main.html'}
+{block name="main"}
+<div class="row">
+	<div class="span8">
+		<ul class="breadcrumb">
+		  	<li>
+		    	<a href="">首页</a> <span class="divider">/</span>
+		  	</li>
+		  	<li>
+		    	<a href="topic.html">社区</a> <span class="divider">/</span>
+		  	</li>
+		  	<li>
+		    	<a href="topic/tag/{$tag.id}.html">{$tag.tag}</a> <span class="divider">/</span>
+		  	</li>
+		  	<li class="active">{$topic.title}</li>
+		</ul>
+		<div class="block">
+			<h3>{$topic.title}{if $topic.uid == $smarty.session.user.uid}&nbsp;&nbsp;<a href="topic/edit/{$topic.tid}.html"><span class="label label-info">编辑</span>&nbsp;&nbsp;</a><a href="topic/delete/{$topic.tid}.html"><span class="label label-important">删除</span></a>{/if}</h3>
+			<div style="margin-top:10px">{$topic.text}</div>
+			<!--warring-->
+			<div class="alert alert-info">
+			    期待您的<a class="ping" href="#">&nbsp;<span class="label label-info">评论</span></a>&nbsp;喔
+			</div>
+			<!--end warring-->
+			<!--replay-->
+			<table class="table table-bordered table-striped">
+					{if $replay}
+				    	{foreach $replay as $val}
+					      	<tr>
+						        <td style="width:25%" valign="top">
+						        	{if $val.uid}
+						        		<a style="padding:5px" href="account/view/{$val.uid}"><img src="Services/images/cropped_70_70/{$val.avatar}"></a>
+						        		<a style="padding:5px" href="account/view/{$val.uid}"><code>{$val.username}</code></a>
+						        		<p style="padding:5px">{$val.addtime}</p>
+						        	{else}
+						        		{$val.username}
+						        		<p>{$val.addtime}</p>
+						        	{/if}
+						        </td>
+						        <td style="width:85%" valign="top">{$val.text}</td>
+					      	</tr>
+				      	{/foreach}
+					{/if}
+			    </tbody>
+			</table>
+		<!--end replay-->
+		</div>
+	</div>
+	<div class="span4">
+		<div class="block">
+			<form class="form-horizontal" action="topic/replay/{$topic.tid}.html" method="post">
+			  	<fieldset>
+					<textarea name="info[text]" class="replay" style="width:270px;height:150px"></textarea>
+					<div style="margin-top:10px">
+						{if !$smarty.session.user.uid}
+							<span style="">未<a class="label" href="account/sing_in.html">登陆</a>用户署名<span class="">"青岛银"</span></span>
+						{else}
+							{$smarty.session.user.name},你好!
+						{/if}
+						<button class="btn" type="submit" style="float:right;">评论</button>
+					</div>
+			  	</fieldset>
+			</form>
+		</div>
+
+		<h2>标签</h2>
+		<div class="block">
+			民生
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$('.form-horizontal').submit(function() {
+	var replay = $('.replay').val();
+	if (!replay) {
+		return false;
+	};
+});
+
+$('.ping').click(function(argument){
+	$('.replay').focus();
+	return false;
+});
+
+var replay = $('.span4').position();
+
+$(window).scroll(function() {
+	if ($(this).scrollTop() > 45) {
+		$('.span4').css({
+			position:'absolute',
+			left:replay.left,
+			top:$(this).scrollTop()+$('.navbar-inner').height()
+		});
+	} else {
+		$('.span4').css({
+			position:''
+		});
+	}
+});
+</script>
+{/block}

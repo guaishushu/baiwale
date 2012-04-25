@@ -1,0 +1,38 @@
+{extends file='layout/main.html'}
+{block name="main"}
+<div class="span8 block">
+	<form class="form-horizontal" action="account/sing_up.html" method="post">
+		<fieldset>
+			<legend>用户注册</legend>
+			<div class="control-group">
+				<label for="email" class="control-label">邮箱:</label>
+				<div class="controls">
+			  		<input type="text" name="info[email]" class="span3">
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="username" class="control-label">昵称:</label>
+				<div class="controls">
+			  		<input type="text" name="info[username]" class="span3">
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="password" class="control-label">密码:</label>
+				<div class="controls">
+			  		<input type="password" name="info[password]" class="span3">
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="repass" class="control-label">密码确认:</label>
+				<div class="controls">
+			  		<input type="password" name="info[re_password]" class="span3">
+				</div>
+			</div>
+			<div class="form-actions">
+				<button class="btn btn-primary" type="submit">注册</button>
+				<button class="btn">取消</button>
+			</div>
+		</fieldset>
+	</form>
+</div>
+{/block}

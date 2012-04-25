@@ -1,0 +1,72 @@
+<script>window.SWFUpload || document.write('<script src="js/swfupload/swfupload.js">\x3C/script>')</script> 
+
+<div><span id="file_info_{$upload_name}" style="padding-right:10px;">{if $value}<input type="hidden" name="{$upload_name}" value="{$value}" />{/if}</span><span><span id="spanplaceorder_{$upload_name}"></span></span></div>
+
+<script type="text/javascript" charset="utf-8">
+
+new SWFUpload({
+
+	// file_post_name: 'Filedata',
+	upload_url: __SITE_URL__+"/Services/upload",
+
+	// File Upload Settings
+	file_size_limit : "10MB",
+	file_types : "{$file_types|default:'*.*'}",
+	file_types_description : "All Files",
+	file_upload_limit : "1",
+	file_queue_limit : "0",
+
+	file_queue_error_handler : function (file, errorCode, message) {
+	  alert('file_queue_error_handler'+errorCode);
+	},
+
+	file_dialog_complete_handler : function (numFilesSelected, numFilesQueued) {
+    if (numFilesSelected > 0 && numFilesQueued > 0) {
+        this.setButtonDisabled(true);
+        this.startUpload();
+    }
+  },
+
+	upload_progress_handler : function uploadProgress(file, bytesLoaded, bytesTotal) {
+	  var percent = Math.ceil((bytesLoaded / bytesTotal) * 100);
+	  $('span[id="file_info_{$upload_name}"]').html(file.name+' '+percent+'%');
+	},
+
+	upload_error_handler : function(file, errorCode, message){
+	  alert('upload_error_handler'+errorCode);
+	},
+
+	upload_success_handler : function (file, serverData){
+	  var html = '';
+	  if (serverData.substr(0, 1) == '0') {
+	    alert(serverData.substr(1));
+	  } else {
+	    html = '<span><input type="hidden" value="'+serverData+'" name="{$upload_name}"/><img src="Services/images/cropped_128/'+serverData+'"></span>';
+	  }
+	  $('span[id="file_info_{$upload_name}"]').html(html);
+	},
+
+	upload_complete_handler : function (file) {
+	  
+	  if (this.getStats().files_queued > 0) {
+	    this.startUpload();
+	  } else {
+      this.setButtonDisabled(false);
+	  }
+
+	},
+
+	// Button Settings
+	button_image_url : __SITE_URL__+"/js/swfupload/XPButtonUploadText_61x22.png",
+	button_placeholder_id : "spanplaceorder_{$upload_name}",
+	button_width: 61,
+	button_height: 22,
+
+	// Flash Settings
+	flash_url : __SITE_URL__+"/js/swfupload/swfupload.swf",
+
+	// Debug Settings
+	debug: false
+});
+
+</script>

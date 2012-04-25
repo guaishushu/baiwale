@@ -1,0 +1,24 @@
+site 注册classMap
+
+Site::getInstance()
+  ->registAutoload($classMap)
+  ->setCompnent($config)
+  ->run(new WebApplication());
+Site::getInstance()->smarty
+ArrayObject  注册器?
+
+
+$c = new Controller();
+$c->setActionDir('./controller');
+$c->setModuleDir('./module', 'controller');
+$c->run($url);
+
+
+
+Component::getInstance()->db;
+
+Model::Load('users')->getList();
+Site::getInstance()
+  ->setComponent(new Component($config));
+Site::getInstance()
+Component::getInstance()->

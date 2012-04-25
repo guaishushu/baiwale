@@ -1,0 +1,124 @@
+{extends file='layout/main.html'}
+{block name="main"}
+<div class="row">
+	<div class="span8">
+		<ul class="breadcrumb">
+		  	<li>
+		    	<a href="">首页</a> <span class="divider">/</span>
+		  	</li>
+		  	<li class="active">个人资料</li>
+		</ul>
+		<div class="block">
+			<!--nav-->
+			<div class="tabbable">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#1" data-toggle="tab">个人资料</a></li>
+					<li><a href="#2" data-toggle="tab">密码修改</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="1">
+						<!--个人资料-->
+						<form class="form-horizontal" action="account.html" method="post" enctype="multipart/form-data">
+							<fieldset>
+								<div class="control-group">
+									<label for="email" class="control-label">邮箱</label>
+									<div class="controls">
+									    <input type="text" disabled="" value="{$info.email}" id="disabledInput" class="span3 input-xlarge disabled">
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label for="username" class="control-label">昵称</label>
+									<div class="controls">
+								  		<input type="text" name="info[username]" class="span3 username" value="{$info.username}">
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label for="gender" class="control-label">性别</label>
+									<div class="controls">
+								  		<select name="info[gender]">
+								  			<option value="1" {if $info.gender == 1}selected{/if}>男银</option>
+								  			<option value="0" {if $info.gender == 0}selected{/if}>女银</option>
+								  			<option value="2" {if $info.gender == 2}selected{/if}>变性银</option>
+								  		</select>
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label for="avatar" class="control-label">头像</label>
+									<div class="controls">
+								  		<input type="file" name="photo">
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label for="city" class="control-label">城市</label>
+									<div class="controls">
+								  		<input type="text" name="info[city]" class="span3" value="{$info.city}">
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label for="tagline" class="control-label">简介</label>
+									<div class="controls">
+								  		<textarea name="info[tagline]" style="width:260px">{$info.tagline}</textarea>
+									</div>
+								</div>
+
+								<div class="form-actions">
+									<button class="btn btn-primary" type="submit">更新资料</button>
+									<button class="btn">取消</button>
+								</div>
+							</feildset>
+						</form>
+					</div>
+					<div class="tab-pane" id="2">
+						<form class="form-horizontal" action="account/password" method="post">
+							<div class="control-group">
+								<label for="oldpass" class="control-label">旧密码:</label>
+								<div class="controls">
+							  		<input type="password" name="info[oldpass]" class="span3">
+								</div>
+							</div>
+							<div class="control-group">
+								<label for="password" class="control-label">新密码:</label>
+								<div class="controls">
+							  		<input type="password" name="info[password]" class="span3">
+								</div>
+							</div>
+							<div class="control-group">
+								<label for="repassword" class="control-label">密码确认:</label>
+								<div class="controls">
+							  		<input type="password" name="info[repassword]" class="span3">
+								</div>
+							</div>
+							<div class="form-actions">
+								<button class="btn btn-primary" type="submit">更改密码</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!--nav end-->
+		</div>
+	</div>
+
+	<div class="span3">
+		<!--头像-->
+		<div class="block">
+			<img src="{$info.avatar}">
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$('form').submit(function(){
+	var username = $('.username').val();
+	if (!username) {
+		alert('昵称不能为空');
+		return false;
+	};
+});
+</script>
+{/block}

@@ -1,0 +1,75 @@
+{extends file='layout/base.html'}
+{block name="head"}
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame Remove this if you use the .htaccess -->
+<title>{block name='title'}[白挖了!!!]只谈民生 不谈政治{/block}</title>
+<meta charset="utf-8">
+<meta name="description" content="青岛 白挖了 种树 社区 论坛 青青岛 琴岛">
+<meta name="author" content="Ting Yee">
+<meta name="Keywords" content="青岛 社区">
+<meta name="Copyright" content="julytwilight.com">
+<meta content="All" name="Qingdao 青岛">
+<!-- CSS : implied media="all" -->
+<base href="{$smarty.const.SITE_URL}/" />
+<link rel="stylesheet" href="style/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="style/bootstrap-responsive.min.css"> -->
+<link rel="stylesheet" href="style/docs.css">
+<link rel="stylesheet" href="style/prettify.css">
+<!-- <link rel="stylesheet" href="style/style.css"> -->
+<script src="js/jquery-1.7.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+{/block}
+
+{block name="body"}
+<!-- <a href="{$smarty.const.SITE_URL}/admin"><img src="{$smarty.const.THEME_URL}/images/logo.png" class="fl"></a> -->
+<!--header start-->
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container" style="">
+			<a class="brand" href="">白挖了</a>
+			<form class="navbar-search pull-left" action="">
+			<input class="search-query" type="text" placeholder="Search">
+			</form>
+			<div class="nav-collapse" style="float:right">
+				<ul class="nav">
+					<li {if !$active}class="active"{/if}>
+						<a href="">首页专题</a>
+					</li>
+					<li {if $active == 'topic'}class="active"{/if}>
+						<a href="topic.html">论坛</a>
+					</li>
+					<li {if $active == 'about'}class="active"{/if}>
+						<a href="about.html">关于白挖了</a>
+					</li>
+					<li {if $active == 'contact'}class="active"{/if}>
+						<a href="contact.html">联系我们</a>
+					</li>
+					<li class="divider-vertical"></li>
+					{if !$smarty.session.user}
+						<li {if $active == 'sing_in'}class="active"{/if}>
+							<a href="account/sing_in.html">登陆</a>
+						</li>
+						<li {if $active == 'sing_up'}class="active"{/if}>
+							<a href="account/sing_up.html">注册</a>
+						</li>
+					{else}
+						<li {if $active == 'create'}class="active"{/if}>
+							<a href="topic/create.html">发布新帖</a>
+						</li>
+						<li {if $active == 'user'}class="active"{/if}>
+							<a href="account.html">个人资料</a>
+						</li>
+						<li {if $active == 'sing_out'}class="active"{/if}>
+							<a href="account/sing_out.html">退出</a>
+						</li>
+					{/if}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!--header end-->
+<div class="container" style="">
+{block name="main"}
+{/block}
+</div>
+{/block}

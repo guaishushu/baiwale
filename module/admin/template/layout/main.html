@@ -1,0 +1,68 @@
+{extends file='layout/base.html'}
+{block name="head"}
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame Remove this if you use the .htaccess -->
+<title>{block name='title'}[白挖了]后台管理{/block}</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="LAMP 开发 定制 PHP Web Design Coding WebDesign 互联网开发">
+<meta name="author" content="Geek-Zoo Studio">
+<meta name="Keywords" content="Web Design PHP Coding WebDesign">
+<meta name="Copyright" content="Geek-Zoo.com">
+<meta content="All" name="Robots">
+<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="{$smarty.const.THEME_URL}/images/favicon.ico'">
+<link rel="apple-touch-icon" href="{$smarty.const.THEME_URL}/images/apple-touch-icon.png">
+<!-- CSS : implied media="all" -->
+<base href="{$smarty.const.SITE_URL}/" />
+<link rel="stylesheet" href="{$smarty.const.THEME_URL}/style/style.css">
+<link rel="stylesheet" href="{$smarty.const.THEME_URL}/style/layout.css">
+<style>
+  .ke-icon-addhtml {
+    background-position: 0px -1072px;
+    width: 16px;
+    height: 16px;
+  }
+</style>
+<script src="js/jquery-1.7.1.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="{$smarty.const.THEME_URL}/js/libs/modernizr-1.7.min.js"></script>
+
+
+<script type="text/javascript" charset="utf-8">
+  __SITE_URL__ = '{$smarty.const.SITE_URL}';
+	__THEME__ = '{$smarty.const.THEME_URL}';
+</script>
+{/block}
+
+{block name="body"}
+
+<!--header start-->
+<div class="header"> <a href="{$smarty.const.SITE_URL}/admin">白挖了</a>
+	<div class="header_login clearfix">
+	<a href="admin/user/logout" class="btn_logout">登出</a>
+	</div>
+</div>
+<!--header end-->
+
+<div class="container clearfix">
+	<div class="sidebar">
+	<dl class="sidemenu show">
+		<dd><a href="{$smarty.const.SITE_URL}/admin/user.html">用户管理</a></dd>
+		<dd><a href="{$smarty.const.SITE_URL}/admin/topic.html">帖子管理</a></dd>
+		<dd><a href="{$smarty.const.SITE_URL}/admin/node.html">节点管理</a></dd>
+		<dd><a href="{$smarty.const.SITE_URL}/admin/about.html">关于我们</a></dd>
+		<dd><a href="{$smarty.const.SITE_URL}/admin/contact.html">联系我们</a></dd>
+	</dl>
+	</div>
+<div class="main">
+<div class="main_con">
+{block name="main"}
+
+{/block}
+</div>
+</div>
+</div>
+{include file="lib/footer.html"}
+
+{/block}

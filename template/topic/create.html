@@ -1,0 +1,94 @@
+{extends file='layout/main.html'}
+{block name="main"}
+	<script charset="utf-8" src="js/kindeditor/kindeditor.js"></script>
+  	<script charset="utf-8" src="js/kindeditor/zh_CN.js"></script>
+  	<script charset="utf-8" src="js/kindeditor/plugins/code/prettify.js"></script>
+  	<script>
+  	KindEditor.lang({
+  	  addhtml : '插入段落标记'
+  	});
+  	KindEditor.plugin('addhtml', function(K) {
+    	var self = this, name = 'addhtml';
+    	self.clickToolbar(name, function() {
+     		self.insertHtml('[page]');
+    	});
+  	});
+  	KindEditor.ready(function(K) {
+	    editor = K.create("#content", {
+	    cssPath : 'js/kindeditor/plugins/code/prettify.css',
+	    uploadJson : 'js/kindeditor/php/upload_json.php',
+	    fileManagerJson : 'js/kindeditor/php/file_manager_json.php',
+	    allowFileManager : true,
+	    items:["source","fontname","fontsize","|","forecolor","hilitecolor","removeformat","|","image","flash","emoticons","link","unlink"]
+	    });
+	    prettyPrint();
+  	});
+</script>
+<div class="row">
+	<div class="span8">
+		<ul class="breadcrumb">
+		  	<li>
+		    	<a href="">首页</a> <span class="divider">/</span>
+		  	</li>
+		  	<li>
+		    	<a href="topic.html">社区</a> <span class="divider">/</span>
+		  	</li>
+		  	<li class="active">发布新帖</li>
+		</ul>
+		<div class="block">
+			<form class="form-horizontal" action="topic/create.html" method="post">
+				<fieldset>
+					<div class="control-group">
+				  		标题&nbsp;&nbsp;<input type="text" name="info[title]" class="span3 title">
+				  		<select class="span2 tag" name="info[tag]">
+				  			<option value="">请选择标签</option>
+	  		                {foreach $tag as $key => $val}
+	  		                	<option value="{$val.id}">{$val.tag}</option>
+	  		                {/foreach}
+	  		             </select>
+					</div>
+					<div class="control-group">
+				  		<textarea style="visibility:hidden;width:600px;height:320px;" id="content" name="info[text]" class="text" value="{$content.text}"></textarea>
+					</div>
+					<div style="float:right">
+						<button class="btn btn-primary" type="submit">发布</button>
+						<button class="btn">取消</button>
+					</div>
+				</feildset>
+			</form>
+		</div>
+	</div>
+
+	<div class="span4">
+		<h2>发帖细则</h2>
+		<div class="block">
+			<p style="margin-top:10px;font-size:14px">&nbsp;&nbsp;只谈民生&nbsp;&nbsp;不谈政治&nbsp;&nbsp;畅所欲言&nbsp;&nbsp;切忌诽谤</p>
+			<p style="font-size:14px">&nbsp;&nbsp;多点事实&nbsp;&nbsp;少点扯淡&nbsp;&nbsp;转载引用&nbsp;&nbsp;表明出处</p>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$('.form-horizontal').submit(function(){
+	editor.sync();
+
+	var title = $('.title').val();
+	if (!title) {
+		alert('请填入标题');
+		return false;
+	};
+
+	var text = $('.text').val();
+	if (!text) {
+		alert('请填入内容');
+		return false;
+	};
+
+	var tag  = $('.tag').val();//标签
+	if (!tag) {
+		alert('请选择标签');
+		return false;
+	};
+});
+</script>
+{/block}

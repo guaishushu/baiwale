@@ -4,26 +4,26 @@
   	<script charset="utf-8" src="js/kindeditor/zh_CN.js"></script>
   	<script charset="utf-8" src="js/kindeditor/plugins/code/prettify.js"></script>
   	<script>
-  	KindEditor.lang({
-  	  addhtml : '插入段落标记'
-  	});
-  	KindEditor.plugin('addhtml', function(K) {
-    	var self = this, name = 'addhtml';
-    	self.clickToolbar(name, function() {
-     		self.insertHtml('[page]');
-    	});
-  	});
-  	KindEditor.ready(function(K) {
-	    editor = K.create("#content", {
-	    cssPath : 'js/kindeditor/plugins/code/prettify.css',
-	    uploadJson : 'js/kindeditor/php/upload_json.php',
-	    fileManagerJson : 'js/kindeditor/php/file_manager_json.php',
-	    allowFileManager : true,
-	    items:["source","fontname","fontsize","|","forecolor","hilitecolor","removeformat","|","image","flash","emoticons","link","unlink"]
-	    });
-	    prettyPrint();
-  	});
-</script>
+	  	KindEditor.lang({
+	  	  addhtml : '插入段落标记'
+	  	});
+	  	KindEditor.plugin('addhtml', function(K) {
+	    	var self = this, name = 'addhtml';
+	    	self.clickToolbar(name, function() {
+	     		self.insertHtml('[page]');
+	    	});
+	  	});
+	  	KindEditor.ready(function(K) {
+		    editor = K.create("#content", {
+		    cssPath : 'js/kindeditor/plugins/code/prettify.css',
+		    uploadJson : 'js/kindeditor/php/upload_json.php',
+		    fileManagerJson : 'js/kindeditor/php/file_manager_json.php',
+		    allowFileManager : true,
+		    items:["source","fontname","fontsize","|","forecolor","hilitecolor","removeformat","|","image","flash","emoticons","link","unlink"]
+		    });
+		    prettyPrint();
+	  	});
+	</script>
 <div class="row">
 	<div class="span8">
 		<ul class="breadcrumb">

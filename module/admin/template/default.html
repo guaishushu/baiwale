@@ -1,6 +1,18 @@
 {extends file='layout/main.html'}
 {block name="main"}
 <div class="main_title">
-
+    <h2>首页管理</h2>
+</div>
+<div class="con_blk">
+	<form action="admin/index/date.html" method="post" accept-charset="utf-8">
+		<h3 class="light_gray">首页引用帖子ID</h3>
+		<input name="index" type="text" class="text" value="{$data.data}" />
+	</form>
+	<div class="btn_blk b_t">
+		<div class="fr">
+			<a href="#" class="btn2 fr ml20 cancel">取消</a>
+			<a href="#" class="btn1 fr save">确定</a>
+		</div>
+	</div>
 </div>
 {/block}

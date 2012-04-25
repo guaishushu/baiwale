@@ -14,7 +14,6 @@ abstract class baseAction extends ModuleAction
     public function __construct($controller)
     {
         parent::__construct($controller);
-        session_start();
         define('THEME_URL', SITE_URL.'/module/'.$this->controller->module);
         define('MODULE_URL', ROOT_PATH.'/module/'.$this->controller->module);
     }

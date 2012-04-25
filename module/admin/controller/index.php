@@ -8,9 +8,19 @@ class Action extends adminAction
         // $ip = $_SERVER['SERVER_ADDR'];
         // $info = $_SERVER['SERVER_SIGNATURE'];
         //get_defined_vars()得到作用域所有变量
-        $this->display('default.html');
+        $data = _model('config')->read(array('name'=>'index'));
+        $this->display('default.html',array('data'=>$data));
     }
 
+    public function date() {
+        $index = _POST('index', 0);
+        if ( is_int($index) ) {
+            _model('config')->update(array('name' => 'index'), array('data' => $index));
+        } else {
+            $this->msg("是数字啊 哥哥");
+        }
+        $this->redirect("admin.html");
+    }
     public function upload($value) {
         if($value['error'] > 0){
             return false;

@@ -21,6 +21,7 @@ class Action extends adminAction
         }
         $this->redirect("admin.html");
     }
+    
     public function upload($value) {
         if($value['error'] > 0){
             return false;

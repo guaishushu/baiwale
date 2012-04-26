@@ -4,13 +4,21 @@ require dirname(__FILE__).'/../lib/adminAction.php';
 class Action extends adminAction
 {
 	public function index() {
-		$topics = _model('topic')->getList();
-		$this->display('topic.html',array(
-			'topics' => $topics,
+		$tags = _model('tag')->getList();
+		$this->display('tag.html',array(
+			'tags' => $tags,
 		));
 	}
 
+	public function create() {
+
+	}
+
 	public function delete($id) {
+
+	}
+
+	public function edit($id) {
 
 	}
 }

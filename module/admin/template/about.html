@@ -1,6 +1,51 @@
 {extends file='layout/main.html'}
 {block name="main"}
-<div class="main_title">
+<script charset="utf-8" src="{$smarty.const.THEME_URL}/js/kindeditor/kindeditor.js"></script>
+  <script charset="utf-8" src="{$smarty.const.THEME_URL}/js/kindeditor/zh_CN.js"></script>
+  <script charset="utf-8" src="{$smarty.const.THEME_URL}/js/kindeditor/plugins/code/prettify.js"></script>
+<script>
+  KindEditor.lang({
+    addhtml : '插入段落标记'
+  });
+  KindEditor.plugin('addhtml', function(K) {
+    var self = this, name = 'addhtml';
+    self.clickToolbar(name, function() {
+      self.insertHtml('[page]');
+    });
+  });
+  KindEditor.ready(function(K) {
+    editor = K.create("#content", {
+      cssPath : '{$smarty.const.THEME_URL}/js/kindeditor/plugins/code/prettify.css',
+      uploadJson : '{$smarty.const.THEME_URL}/js/kindeditor/php/upload_json.php',
+      fileManagerJson : '{$smarty.const.THEME_URL}/js/kindeditor/php/file_manager_json.php',
+      allowFileManager : true,
+    });
+    prettyPrint();
+  });
+</script>
 
+<div class="main_title">
+    <h2>关于我们</h2>
+</div><!--"admin/submit.html?id="-->
+<form action='admin/about/data.html' method="post" accept-charset="utf-8" enctype="multipart/form-data">
+
+<div class="con_blk">
+  <h3 class="light_gray">内容</h3>
+  <textarea style="visibility:hidden; height:500px" id="content" name="info[content]" value="">{$date.content}</textarea>
 </div>
+</form>
+
+<div class="btn_blk b_t">
+    <div class="fr">
+        <a href="#" class="btn2 fr ml20 cancel">取消</a>
+        <a href="#" class="btn1 fr save">确定</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+  $("#content").html("{$content.content}");
+  $(".save").click(function(){
+   editor.sync();
+  });
+ </script>
 {/block}

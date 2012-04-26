@@ -19,12 +19,12 @@ class Action extends SiteAction {
             }
         }
 
-        $tag = _model('tag')->getList();
+        $tags = _model('tag')->getList();
         //$this->pvar($info);die;
         $this->display("topic/list.html", array(
 			'active' => 'topic',
             'info' => $info,
-            'tags' => $tag,
+            'tags' => $tags,
 		));
     }
 
@@ -57,9 +57,29 @@ class Action extends SiteAction {
 		));
     }
 
-    public function tag() {
+    public function tag($id) {
+        $info = _model('')->getList('SELECT user.username, tag.id, tag.tag, topic.title, topic.tid, topic.retime FROM topic, user, tag WHERE topic.uid = user.uid AND topic.tag = tag.id AND topic.tag = ' . $id);
+        //$this->pvar($info);die;
+        foreach ($info as $key => $value) {
+            $replay = _model('replay')->read('WHERE tid = ' . $value['tid'] . ' ORDER BY addtime DESC');
+            if ( $replay ) {
+                if ( $replay['uid'] == 0 ) {
+                    $info[$key]['rusername'] = '青岛银';
+                } else {
+                    $ruser = _model()->read('SELECT uid, username FROM user WHERE uid = ' . $replay['uid']);
+                    $info[$key]['ruid'] = $ruser['uid'];
+                    $info[$key]['rusername'] = $ruser['username'];
+                }
+                $info[$key]['rtime'] = date("m-d H:i", $replay['addtime']);
+            }else {
+                $info[$key]['rtime'] = '无回复';
+            }
+        }
+        $tags = _model('tag')->getList();//获得标签
     	$this->display("topic/list.html", array(
-    		'active' => 'topic',
+    		'active' => 'topic', 
+            'info' => $info,
+            'tags' => $tags,
     	));
     }
 

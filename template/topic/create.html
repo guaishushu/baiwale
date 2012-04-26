@@ -25,7 +25,7 @@
 	  	});
 	</script>
 <div class="row">
-	<div class="span8">
+	<div class="span9">
 		<ul class="breadcrumb">
 		  	<li>
 		    	<a href="">首页</a> <span class="divider">/</span>
@@ -48,7 +48,7 @@
 	  		             </select>
 					</div>
 					<div class="control-group">
-				  		<textarea style="visibility:hidden;width:600px;height:320px;" id="content" name="info[text]" class="text" value="{$content.text}"></textarea>
+				  		<textarea style="visibility:hidden;width:680px;height:450px;" id="content" name="info[text]" class="text" value="{$content.text}"></textarea>
 					</div>
 					<div style="float:right">
 						<button class="btn btn-primary" type="submit">发布</button>
@@ -89,6 +89,22 @@ $('.form-horizontal').submit(function(){
 		alert('请选择标签');
 		return false;
 	};
+});
+
+var replay = $('.span4').position();
+
+$(window).scroll(function() {
+	if ($(this).scrollTop() > 45) {
+		$('.span4').css({
+			position:'absolute',
+			left:replay.left,
+			top:$(this).scrollTop()+$('.navbar-inner').height()
+		});
+	} else {
+		$('.span4').css({
+			position:''
+		});
+	}
 });
 </script>
 {/block}

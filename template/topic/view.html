@@ -1,7 +1,7 @@
 {extends file='layout/main.html'}
 {block name="main"}
 <div class="row">
-	<div class="span8">
+	<div class="span9">
 		<ul class="breadcrumb">
 		  	<li>
 		    	<a href="">首页</a> <span class="divider">/</span>
@@ -27,17 +27,17 @@
 					{if $replay}
 				    	{foreach $replay as $val}
 					      	<tr>
-						        <td style="width:25%" valign="top">
+						        <td style="width:20%" valign="top">
 						        	{if $val.uid}
 						        		<a style="padding:5px" href="account/view/{$val.uid}"><img src="Services/images/cropped_70_70/{$val.avatar}"></a>
 						        		<a style="padding:5px" href="account/view/{$val.uid}"><code>{$val.username}</code></a>
 						        		<p style="padding:5px">{$val.addtime}</p>
 						        	{else}
-						        		{$val.username}
-						        		<p>{$val.addtime}</p>
+						        		<span style="padding:5px">{$val.username}</span>
+						        		<p style="padding:0px 5px 0px 5px">{$val.addtime}</p>
 						        	{/if}
 						        </td>
-						        <td style="width:85%" valign="top">{$val.text}</td>
+						        <td style="width:90%" valign="top">{$val.text}</td>
 					      	</tr>
 				      	{/foreach}
 					{/if}

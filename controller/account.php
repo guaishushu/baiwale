@@ -25,7 +25,6 @@ class Action extends SiteAction {
         } else {
             $info = _model('user')->read(array('uid'=>$_SESSION['user']['uid']));
             if ( !$info ) {
-                $this->pvar($_SESSION);die;
                 $this->msg('搞错了吧...');
             }
             $this->display('account/account.html', array(
@@ -36,7 +35,28 @@ class Action extends SiteAction {
     }
 
     public function view($uid) {
-        
+        //判断uid传递是否诚g嗯
+        if ( empty($uid) ) {
+            $this->msg('您看谁啊???');
+        }
+        //获得user数据
+        $user = _model('')->read("SELECT uid as '入伙排名', username as '昵称', gender as '性别', avatar, city as '城市', tagline as '自我介绍', jointime as '入伙时间' FROM user WHERE uid = $uid");
+        $avatar = $user['avatar'];
+        $user['入伙时间'] = date('Y-m-d H:i:s', $user['入伙时间']);
+        $nickname = $user['昵称'];
+        unset($user['avatar']);
+        if ( !$user ) {
+            $this->msg('搞错了吧...');
+        }
+        //获得user发帖
+        $topic = _model('topic')->read("WHERE uid = $uid ORDER BY addtime DESC LIMIT 0,5");
+        $this->display('account/view.html',array(
+            'active' => 'user',
+            'user' => $user, 
+            'avatar' => $avatar,
+            'nickname' => $nickname,
+            'topic' => $topic,
+        ));
     }
 
     public function password() {

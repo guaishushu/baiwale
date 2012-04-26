@@ -1,7 +1,7 @@
 <?php  
 class Action extends SiteAction {
     public function index() {
-        $info = _model('')->getList('SELECT user.username, tag.id, tag.tag, topic.title, topic.tid, topic.retime FROM topic, user, tag WHERE topic.uid = user.uid AND topic.tag = tag.id');
+        $info = _model('')->getList('SELECT user.uid, user.username, tag.id, tag.tag, topic.title, topic.tid, topic.retime FROM topic, user, tag WHERE topic.uid = user.uid AND topic.tag = tag.id');
         //$this->pvar($info);die;
         foreach ($info as $key => $value) {
             $replay = _model('replay')->read('WHERE tid = ' . $value['tid'] . ' ORDER BY addtime DESC');

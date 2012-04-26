@@ -77,7 +77,7 @@ class Action extends SiteAction {
         }
         $tags = _model('tag')->getList();//获得标签
     	$this->display("topic/list.html", array(
-    		'active' => 'topic', 
+    		'active' => 'topic',
             'info' => $info,
             'tags' => $tags,
     	));

@@ -1,3 +1,3 @@
 tmp/
-congfig/
-*.DS_Store
+config/
+*.DS_Storex

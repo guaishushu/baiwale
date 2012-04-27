@@ -151,6 +151,6 @@ class Action extends SiteAction {
         $info['addtime'] = time();
         $id = _model('replay')->create($info);
         _model('topic')->update(array('tid'=>$tid), array('retime'=>$info['addtime']));
-        $this->redirect("topic/view/$tid.html?rid=$id");
+        $this->redirect("topic/view/$tid.html");
     }
 }

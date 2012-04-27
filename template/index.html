@@ -9,15 +9,18 @@
 	</div>
 
 	<div class="span4">
-		<div class="block">
-			<h3>进入专题</h3>
-			<h3>进入论坛</h3>
-		</div>
-		<h2>标签</h2>
-		<div class="block">
+		<div class="">
+			<a class="btn btn-inverse" href="topic/view/{$info.tid}">进入专题</a>
+			<a class="btn btn-danger" href="topic.html">进入论坛</a>
 			{foreach $tags as $key => $val}
 				<a href="topic/tag/{$val.id}.html" class="label label-success">{$val.tag}</a>
 			{/foreach}
+		</div>
+
+		<div style="margin-top:20px">
+			<h2>白挖了 白彪了</h2>
+			<h3>1.</h3>
+			
 		</div>
 	</div>
 </div>

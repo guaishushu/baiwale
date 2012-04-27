@@ -111,11 +111,5 @@ $(window).scroll(function() {
 		});
 	}
 });
-
-var rid = {$smarty.get.rid};
-if (rid) {
-	var height = $('body').height() - $(window).height();
-	$(this).scrollTop(height + $('.navbar-inner').height() + 50);
-};
 </script>
 {/block}

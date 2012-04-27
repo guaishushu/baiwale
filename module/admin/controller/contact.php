@@ -10,8 +10,8 @@ class Action extends adminAction
 	}
 
 	public function date() {
-	    $index = _POST('about', 0);
-	    if ( is_int($index) ) {
+	    $index = _POST('about', '');
+	    if ( !empty($index) ) {
 	        _model('config')->update(array('name' => 'about'), array('data' => $index));
 	    } else {
 	        $this->msg("是数字啊 哥哥");

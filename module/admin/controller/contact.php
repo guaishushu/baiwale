@@ -9,7 +9,7 @@ class Action extends adminAction
 	    $this->display('contact.html',array('data'=>$data));
 	}
 
-	public function date() {
+	public function data() {
 	    $index = _POST('about', '');
 	    if ( !empty($index) ) {
 	        _model('config')->update(array('name' => 'about'), array('data' => $index));

@@ -12,7 +12,7 @@ class Action extends adminAction
         $this->display('default.html',array('data'=>$data));
     }
 
-    public function date() {
+    public function data() {
         $index = _POST('index', 0);
         if ( is_int($index) ) {
             _model('config')->update(array('name' => 'index'), array('data' => $index));

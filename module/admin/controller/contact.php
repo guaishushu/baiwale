@@ -16,6 +16,6 @@ class Action extends adminAction
 	    } else {
 	        $this->msg("是数字啊 哥哥");
 	    }
-	    $this->redirect("admin.html");
+	    $this->redirect("admin/contact.html");
 	}
 }

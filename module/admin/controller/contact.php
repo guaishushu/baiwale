@@ -10,9 +10,9 @@ class Action extends adminAction
 	}
 
 	public function data() {
-	    $index = _POST('about', '');
+	    $index = _POST('contact', '');
 	    if ( !empty($index) ) {
-	        _model('config')->update(array('name' => 'about'), array('data' => $index));
+	        _model('config')->update(array('name' => 'contact'), array('data' => $index));
 	    } else {
 	        $this->msg("是数字啊 哥哥");
 	    }

@@ -31,7 +31,7 @@
 
 <div class="con_blk">
   <h3 class="light_gray">内容</h3>
-  <textarea style="visibility:hidden; height:500px" id="content" name="about" value="">{$date.data}</textarea>
+  <textarea style="visibility:hidden; height:500px" id="content" name="about">{$date.data}</textarea>
 </div>
 </form>
 
@@ -43,7 +43,7 @@
 </div>
 
 <script type="text/javascript">
-  $("#content").html("{$content.content}");
+  $("#content").html("{$data.data}");
   $(".save").click(function(){
    editor.sync();
   });

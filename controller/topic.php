@@ -28,7 +28,7 @@ class Action extends SiteAction {
 		));
     }
 
-    public function view($tid='') {
+    public function view($tid=0) {
     	$topic = _model('topic')->read(array('tid'=>$tid));
         $topic['addtime'] = date("Y-m-d H:i");
         $user = _model('user')->read('WHERE uid = ' . $topic['uid']);
@@ -93,6 +93,7 @@ class Action extends SiteAction {
             $info['text'] = trim($info['text']);
             $info['uid'] = $_SESSION['user']['uid'];
             $info['addtime'] = time();
+            $info['retime'] = 1607702400;
             $id = _model('topic')->create($info);
             if ( !$id ) {
                 $this->msg('发布失败，请重试');
@@ -150,6 +151,6 @@ class Action extends SiteAction {
         $info['addtime'] = time();
         $id = _model('replay')->create($info);
         _model('topic')->update(array('tid'=>$tid), array('retime'=>$info['addtime']));
-        $this->redirect("topic/view/$tid.html");
+        $this->redirect("topic/view/$tid.html?rid=$id");
     }
 }

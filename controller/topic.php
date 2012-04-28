@@ -92,8 +92,7 @@ class Action extends SiteAction {
             }
             $info['text'] = trim($info['text']);
             $info['uid'] = $_SESSION['user']['uid'];
-            $info['addtime'] = time();
-            $info['retime'] = 1607702400;
+            $info['retime'] = $info['addtime'] = time();
             $id = _model('topic')->create($info);
             if ( !$id ) {
                 $this->msg('发布失败，请重试');

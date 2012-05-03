@@ -29,6 +29,7 @@ $ext_arr = array(
 $max_size = 1000000;
 
 $save_path = realpath($save_path) . '/';
+echo $save_path;die;
 
 //有上传文件时
 if (empty($_FILES) === false) {
@@ -47,6 +48,7 @@ if (empty($_FILES) === false) {
 		alert("上传目录不存在。");
 	}
 	//检查目录写权限
+	echo $save_path;die;
 	if (@is_writable($save_path) === false) {
 		alert("上传目录没有写权限。");
 	}

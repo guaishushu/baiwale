@@ -2,7 +2,7 @@
 
 dir
 2381
-svn://geek-zoo.8800.org/taijizen/module/admin/js/kindeditor/themes
+svn://geek-zoo.8800.org/taijizen/module/admin/js/kindeditor/attached
 svn://geek-zoo.8800.org/taijizen
 
 
@@ -26,12 +26,6 @@ dingyi
 
 d2da9651-9dfa-4061-9cb5-084e0f683ffa
 
-default
-dir
-
-common
-dir
-
-simple
+image
 dir
 

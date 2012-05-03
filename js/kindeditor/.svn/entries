@@ -2,7 +2,7 @@
 
 dir
 2381
-svn://geek-zoo.8800.org/taijizen/module/admin/js/kindeditor/plugins/code
+svn://geek-zoo.8800.org/taijizen/module/admin/js/kindeditor
 svn://geek-zoo.8800.org/taijizen
 
 
@@ -26,82 +26,23 @@ dingyi
 
 d2da9651-9dfa-4061-9cb5-084e0f683ffa
 
-prettify.js
-file
-
-
-
-
-2012-05-03T11:47:06.000000Z
-709bfcc456c694bfe8ee86d184a1c360
-2012-05-03T05:59:35.040149Z
-2359
-dingyi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-13632
+plugins
+dir
 
-code.js
-file
-
-
-
-
-2012-05-03T11:47:06.000000Z
-88b932e35a7c1831d60444f7e2bfa1bc
-2012-05-03T05:59:35.040149Z
-2359
-dingyi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2071
+themes
+dir
 
-prettify.css
+php
+dir
+
+kindeditor.js
 file
 
 
 
 
-2012-05-03T11:47:06.000000Z
-9d053752fc526cc17066a27a5b1a8b11
+2012-05-03T11:47:11.000000Z
+4183990727f1bd0349d18e7514c7f1e5
 2012-05-03T05:59:35.040149Z
 2359
 dingyi
@@ -126,5 +67,76 @@ dingyi
 
 
 
-960
+158133
+
+kindeditor-min.js
+file
+
+
+
+
+2012-05-03T11:47:11.000000Z
+9f3625fefa2af7a31d912474dd59cb18
+2012-05-03T05:59:35.040149Z
+2359
+dingyi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+89136
+
+zh_CN.js
+file
+
+
+
+
+2012-05-03T11:47:11.000000Z
+5de478296a17583a14b23426511a74dd
+2012-05-03T05:59:35.040149Z
+2359
+dingyi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7545
+
+attached
+dir
 

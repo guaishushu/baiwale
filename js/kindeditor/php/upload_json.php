@@ -29,7 +29,6 @@ $ext_arr = array(
 $max_size = 1000000;
 
 $save_path = realpath($save_path) . '/';
-echo $save_path;die;
 
 //有上传文件时
 if (empty($_FILES) === false) {
@@ -48,7 +47,6 @@ if (empty($_FILES) === false) {
 		alert("上传目录不存在。");
 	}
 	//检查目录写权限
-	echo $save_path;die;
 	if (@is_writable($save_path) === false) {
 		alert("上传目录没有写权限。");
 	}
@@ -79,14 +77,14 @@ if (empty($_FILES) === false) {
 		$save_path .= $dir_name . "/";
 		$save_url .= $dir_name . "/";
 		if (!file_exists($save_path)) {
-			mkdir($save_path, 0777, true);
+			mkdir($save_path);
 		}
 	}
 	$ymd = date("Ymd");
 	$save_path .= $ymd . "/";
 	$save_url .= $ymd . "/";
 	if (!file_exists($save_path)) {
-		mkdir($save_path, 0777, true);
+		mkdir($save_path);
 	}
 	//新文件名
 	$new_file_name = date("YmdHis") . '_' . rand(10000, 99999) . '.' . $file_ext;

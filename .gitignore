@@ -2,4 +2,3 @@ tmp/
 config/
 *.DS_Store
 upload/
-js/kindeditor/attached/

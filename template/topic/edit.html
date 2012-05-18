@@ -39,7 +39,7 @@
 			<form class="form-horizontal" action="topic/edit/{$info.tid}.html" method="post">
 				<fieldset>
 					<div class="control-group">
-				  		标题&nbsp;&nbsp;<input type="text" name="info[title]" class="span3 title" value={$info.title}>
+				  		标题&nbsp;&nbsp;<input type="text" name="info[title]" class="span3 title" value="{$info.title}">
 				  		<select class="span2 tag" name="info[tag]">
 				  			<option value="">请选择标签</option>
 	  		                {foreach $tag as $key => $val}
